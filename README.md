@@ -77,7 +77,54 @@ The system is built on a normalized relational database with the following core 
 - Referential integrity with foreign key constraints
  
 ---
+
+ ## 🚀 Installation
  
+### Prerequisites
+ 
+- Python 3.8 or higher
+- MySQL Server 8.0+
+- pip (Python package manager)
+ 
+### Quick Start
+ 
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/scriptum.git
+   cd scriptum
+   ```
+ 
+2. **Set up the database**
+   ```bash
+   mysql -u root -p < Scriptum_dbdump.sql
+   ```
+ 
+3. **Install Python dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+ 
+4. **Configure database connection**
+   
+   Edit `config.py` and add your MySQL credentials:
+   ```python
+   DB_HOST = 'localhost'
+   DB_USER = 'root'
+   DB_PASSWORD = 'your_mysql_password'
+   DB_NAME = 'bookdb'
+   ```
+ 
+5. **Run the application**
+   ```bash
+   python app.py
+   ```
+ 
+6. **Access the application**
+   
+   Open your browser and navigate to: `http://localhost:5000`
+ 
+---
+
 ## 📊 Entity-Relationship Model
  
  
