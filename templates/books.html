@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Βιβλία - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Βιβλία</h2>
+    <a href="{{ url_for('add_book') }}" class="btn btn-success" style="margin-bottom: 1rem;">➕ Προσθήκη Βιβλίου</a>
+</div>
+
+{% if books %}
+<table>
+    <thead>
+        <tr>
+            <th>ISBN</th>
+            <th>Τίτλος</th>
+            <th>Συγγραφέας</th>
+            <th>Είδος</th>
+            <th>Σελίδες</th>
+            <th>Έτος</th>
+            <th>Γλώσσα</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ book.isbn }}</td>
+            <td><strong>{{ book.book_title }}</strong></td>
+            <td>{{ book.author_name }}</td>
+            <td>{{ book.genre or '-' }}</td>
+            <td>{{ book.page_count or '-' }}</td>
+            <td>{{ book.publication_year or '-' }}</td>
+            <td>{{ book.language or '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="card">
+    <p>Δεν υπάρχουν βιβλία στη βάση.</p>
+</div>
+{% endif %}
+{% endblock %}

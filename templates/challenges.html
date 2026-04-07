@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Reading Challenges - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Reading Challenges</h2>
+    <a href="{{ url_for('add_challenge') }}" class="btn btn-success" style="margin-bottom: 1rem;">➕ Δημιουργία Challenge</a>
+</div>
+
+{% if challenges %}
+<table>
+    <thead>
+        <tr>
+            <th>Όνομα Challenge</th>
+            <th>Χρήστης</th>
+            <th>Έναρξη</th>
+            <th>Λήξη</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for challenge in challenges %}
+        <tr>
+            <td><strong>{{ challenge.challenge_name }}</strong></td>
+            <td>{{ challenge.username }}</td>
+            <td>{{ challenge.start_date }}</td>
+            <td>{{ challenge.end_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="card">
+    <p>Δεν υπάρχουν challenges.</p>
+</div>
+{% endif %}
+{% endblock %}

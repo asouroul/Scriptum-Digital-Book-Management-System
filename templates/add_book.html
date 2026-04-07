@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Προσθήκη Βιβλίου - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Προσθήκη Νέου Βιβλίου</h2>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="isbn">ISBN (13 ψηφία) *</label>
+            <input type="text" id="isbn" name="isbn" maxlength="13" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="book_id">Book ID *</label>
+            <input type="number" id="book_id" name="book_id" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="book_title">Τίτλος *</label>
+            <input type="text" id="book_title" name="book_title" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="author_name">Συγγραφέας *</label>
+            <select id="author_name" name="author_name" required onchange="updateBirthDate()">
+                <option value="">Επιλέξτε συγγραφέα</option>
+                {% for author in authors %}
+                <option value="{{ author.author_name }}" data-birth-date="{{ author.birth_date }}">
+                    {{ author.author_name }} ({{ author.birth_date }})
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="author_birth_date">Ημ. Γέννησης Συγγραφέα *</label>
+            <input type="date" id="author_birth_date" name="author_birth_date" required readonly>
+        </div>
+        
+        <div class="form-group">
+            <label for="publisher_id">Publisher ID *</label>
+            <select id="publisher_id" name="publisher_id" required>
+                <option value="">Επιλέξτε εκδότη</option>
+                {% for publisher in publishers %}
+                <option value="{{ publisher.publisher_id }}">{{ publisher.publisher_id }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="genre">Είδος *</label>
+            <input type="text" id="genre" name="genre" maxlength="15" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="page_count">Σελίδες</label>
+            <input type="number" id="page_count" name="page_count">
+        </div>
+        
+        <div class="form-group">
+            <label for="publication_year">Έτος Έκδοσης</label>
+            <input type="number" id="publication_year" name="publication_year" min="1000" max="2100">
+        </div>
+        
+        <div class="form-group">
+            <label for="language">Γλώσσα</label>
+            <input type="text" id="language" name="language">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Περιγραφή</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Προσθήκη Βιβλίου</button>
+        <a href="{{ url_for('books') }}" class="btn">Ακύρωση</a>
+    </form>
+</div>
+
+<script>
+function updateBirthDate() {
+    var select = document.getElementById('author_name');
+    var selectedOption = select.options[select.selectedIndex];
+    var birthDate = selectedOption.getAttribute('data-birth-date');
+    document.getElementById('author_birth_date').value = birthDate || '';
+}
+</script>
+{% endblock %}

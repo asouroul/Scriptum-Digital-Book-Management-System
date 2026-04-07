@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Λίστες Ανάγνωσης - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Λίστες Ανάγνωσης</h2>
+    <a href="{{ url_for('add_booklist') }}" class="btn btn-success" style="margin-bottom: 1rem;">➕ Δημιουργία Λίστας</a>
+</div>
+
+{% if booklists %}
+<table>
+    <thead>
+        <tr>
+            <th>Όνομα Λίστας</th>
+            <th>Χρήστης</th>
+            <th>Αριθμός Βιβλίων</th>
+            <th>Ενέργειες</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booklist in booklists %}
+        <tr>
+            <td><strong>{{ booklist.booklist_name }}</strong></td>
+            <td>{{ booklist.username }}</td>
+            <td>{{ booklist.book_count }}</td>
+            <td>
+                <a href="{{ url_for('booklist_details', booklist_id=booklist.booklist_id) }}" class="btn">Προβολή</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="card">
+    <p>Δεν υπάρχουν λίστες ανάγνωσης.</p>
+</div>
+{% endif %}
+{% endblock %}

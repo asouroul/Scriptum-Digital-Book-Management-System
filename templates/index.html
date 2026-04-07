@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Αρχική - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Καλώς ήρθατε στο Scriptum</h2>
+    <p>Ένα σύστημα διαχείρισης βιβλίων και κριτικών</p>
+</div>
+
+<div class="grid">
+    <div class="grid-item">
+        <h3>📖 Βιβλία</h3>
+        <p>Περιήγηση και προσθήκη βιβλίων στη βάση</p>
+        <a href="{{ url_for('books') }}" class="btn">Προβολή Βιβλίων</a>
+        <a href="{{ url_for('add_book') }}" class="btn btn-success">Προσθήκη Βιβλίου</a>
+    </div>
+    
+    <div class="grid-item">
+        <h3>✍️ Συγγραφείς</h3>
+        <p>Διαχείριση συγγραφέων</p>
+        <a href="{{ url_for('authors') }}" class="btn">Προβολή Συγγραφέων</a>
+        <a href="{{ url_for('add_author') }}" class="btn btn-success">Προσθήκη Συγγραφέα</a>
+    </div>
+    
+    <div class="grid-item">
+        <h3>👥 Χρήστες</h3>
+        <p>Διαχείριση χρηστών της πλατφόρμας</p>
+        <a href="{{ url_for('users') }}" class="btn">Προβολή Χρηστών</a>
+        <a href="{{ url_for('add_user') }}" class="btn btn-success">Προσθήκη Χρήστη</a>
+    </div>
+    
+    <div class="grid-item">
+        <h3>💬 Κριτικές</h3>
+        <p>Ανάγνωση και γραφή κριτικών βιβλίων</p>
+        <a href="{{ url_for('reviews') }}" class="btn">Προβολή Κριτικών</a>
+        <a href="{{ url_for('add_review') }}" class="btn btn-success">Γράψε Κριτική</a>
+    </div>
+    
+    <div class="grid-item">
+        <h3>📋 Λίστες Ανάγνωσης</h3>
+        <p>Οργάνωση βιβλίων σε λίστες</p>
+        <a href="{{ url_for('booklists') }}" class="btn">Προβολή Λιστών</a>
+        <a href="{{ url_for('add_booklist') }}" class="btn btn-success">Δημιουργία Λίστας</a>
+    </div>
+    
+    <div class="grid-item">
+        <h3>🎯 Reading Challenges</h3>
+        <p>Προκλήσεις ανάγνωσης</p>
+        <a href="{{ url_for('challenges') }}" class="btn">Προβολή Challenges</a>
+        <a href="{{ url_for('add_challenge') }}" class="btn btn-success">Δημιουργία Challenge</a>
+    </div>
+</div>
+{% endblock %}

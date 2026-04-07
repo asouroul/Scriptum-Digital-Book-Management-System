@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}{{ booklist_info.booklist_name }} - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ booklist_info.booklist_name }}</h2>
+    <p><strong>Χρήστης:</strong> {{ booklist_info.username }}</p>
+    <a href="{{ url_for('booklists') }}" class="btn" style="margin-top: 1rem;">← Πίσω στις Λίστες</a>
+</div>
+
+{% if books %}
+<table>
+    <thead>
+        <tr>
+            <th>Τίτλος Βιβλίου</th>
+            <th>Συγγραφέας</th>
+            <th>Κατάσταση</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td><strong>{{ book.book_title }}</strong></td>
+            <td>{{ book.author_name }}</td>
+            <td>
+                {% if book.reading_status == 'want-to-read' %}
+                    📚 Θέλω να διαβάσω
+                {% elif book.reading_status == 'currently-reading' %}
+                    📖 Διαβάζω τώρα
+                {% elif book.reading_status == 'read' %}
+                    ✅ Το έχω διαβάσει
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="card">
+    <p>Η λίστα είναι άδεια.</p>
+</div>
+{% endif %}
+{% endblock %}

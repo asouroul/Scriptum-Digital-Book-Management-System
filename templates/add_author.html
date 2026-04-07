@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Προσθήκη Συγγραφέα - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Προσθήκη Νέου Συγγραφέα</h2>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="author_name">Όνομα Συγγραφέα *</label>
+            <input type="text" id="author_name" name="author_name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="birth_date">Ημερομηνία Γέννησης *</label>
+            <input type="date" id="birth_date" name="birth_date" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="author_id">Author ID *</label>
+            <input type="number" id="author_id" name="author_id" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="biography">Βιογραφία</label>
+            <textarea id="biography" name="biography"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Προσθήκη Συγγραφέα</button>
+        <a href="{{ url_for('authors') }}" class="btn">Ακύρωση</a>
+    </form>
+</div>
+{% endblock %}

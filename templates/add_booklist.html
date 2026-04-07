@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Δημιουργία Λίστας - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Δημιουργία Νέας Λίστας Ανάγνωσης</h2>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="booklist_id">Booklist ID *</label>
+            <input type="number" id="booklist_id" name="booklist_id" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="booklist_name">Όνομα Λίστας *</label>
+            <input type="text" id="booklist_name" name="booklist_name" maxlength="50" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="user_id">Χρήστης *</label>
+            <select id="user_id" name="user_id" required>
+                <option value="">Επιλέξτε χρήστη</option>
+                {% for user in users %}
+                <option value="{{ user.user_id }}">{{ user.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Δημιουργία Λίστας</button>
+        <a href="{{ url_for('booklists') }}" class="btn">Ακύρωση</a>
+    </form>
+</div>
+{% endblock %}

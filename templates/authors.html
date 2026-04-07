@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Συγγραφείς - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Συγγραφείς</h2>
+    <a href="{{ url_for('add_author') }}" class="btn btn-success" style="margin-bottom: 1rem;">➕ Προσθήκη Συγγραφέα</a>
+</div>
+
+{% if authors %}
+<table>
+    <thead>
+        <tr>
+            <th>Όνομα</th>
+            <th>Ημ. Γέννησης</th>
+            <th>Βιογραφία</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for author in authors %}
+        <tr>
+            <td><strong>{{ author.author_name }}</strong></td>
+            <td>{{ author.birth_date }}</td>
+            <td>{{ author.biography or '-' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="card">
+    <p>Δεν υπάρχουν συγγραφείς στη βάση.</p>
+</div>
+{% endif %}
+{% endblock %}

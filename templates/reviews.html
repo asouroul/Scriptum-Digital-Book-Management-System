@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Κριτικές - Scriptum{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Κριτικές Βιβλίων</h2>
+    <a href="{{ url_for('add_review') }}" class="btn btn-success" style="margin-bottom: 1rem;">➕ Γράψε Κριτική</a>
+</div>
+
+{% if reviews %}
+<div style="display: grid; gap: 1rem;">
+    {% for review in reviews %}
+    <div class="card">
+        <h3>{{ review.book_title }}</h3>
+        <p><strong>Χρήστης:</strong> {{ review.username }}</p>
+        <p><strong>Ημερομηνία:</strong> {{ review.review_date }}</p>
+        <p style="margin-top: 1rem;">{{ review.review_text }}</p>
+        <p style="margin-top: 0.5rem; color: #666;">👍 {{ review.likes_count }} likes</p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="card">
+    <p>Δεν υπάρχουν κριτικές.</p>
+</div>
+{% endif %}
+{% endblock %}
