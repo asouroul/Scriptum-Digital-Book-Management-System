@@ -89,8 +89,7 @@ The system is built on a normalized relational database with the following core 
 4. **Referential Integrity** - Cascading deletes and updates maintain data consistency
  
 ---
- 
----
+
  
 ## 🔐 User Roles & Permissions
  
@@ -158,7 +157,7 @@ scriptum/
 │   └── query5.sql                 # User's reading challenges
 │
 └── docs/
-    └── Scriptum_Deliverable1_corrected.pdf  # Full project documentation (Greek)
+    └── Scriptum_Doc.pdf  # Full project documentation (Greek)
 ```
  
 ---
@@ -262,9 +261,9 @@ Complete project documentation (in Greek) is available in `docs/Scriptum_Doc.pdf
  
 **Ομάδα 13 - Database Systems Project**
  
-- **Αλέξανδρος Σουρουλλάς** (10819) - asouroul@ece.auth.gr
-- **Γεώργιος Βρης** (10551) - vrisgeor@ece.auth.gr
-- **Έλενα Λαζαρίδου** (10859) - lazaridoueg@ece.auth.gr
+- **Αλέξανδρος Σουρουλλάς** - asouroul@ece.auth.gr
+- **Γεώργιος Βρης** - vrisgeor@ece.auth.gr
+- **Έλενα Λαζαρίδου** - lazaridoueg@ece.auth.gr
  
 *Aristotle University of Thessaloniki - School of Electrical & Computer Engineering*
  
